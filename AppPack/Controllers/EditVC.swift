@@ -13,7 +13,7 @@ class EditVC: UIViewController, UITextViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "UpdateIdea"
+        self.title = "Update"
         descTextView.delegate = self
         textViewDesign()
         nameTxtField.text = ideaToEdit?.name

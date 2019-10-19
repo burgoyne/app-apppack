@@ -37,7 +37,7 @@ class IdeaVC: UITableViewController {
         navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.3254901961, green: 0.6941176471, blue: 0.7921568627, alpha: 1)
         
         self.title = "AppPack"
-        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Menlo", size: 22)!, NSAttributedString.Key.foregroundColor: UIColor.init(cgColor: #colorLiteral(red: 0.3254901961, green: 0.6941176471, blue: 0.7921568627, alpha: 1))]
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedString.Key.font: UIFont(name: "Menlo", size: 20)!, NSAttributedString.Key.foregroundColor: UIColor.init(cgColor: #colorLiteral(red: 0.3254901961, green: 0.6941176471, blue: 0.7921568627, alpha: 1))]
         
         navigationController?.navigationBar.layer.shadowColor = #colorLiteral(red: 0.2126879096, green: 0.2239724994, blue: 0.265286684, alpha: 1)
         navigationController?.navigationBar.layer.shadowOffset = CGSize(width: 0.0, height: 2.0)
@@ -52,7 +52,25 @@ class IdeaVC: UITableViewController {
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        var numOfSections: Int = 0
+        if (ideas.count > 0)
+        {
+            tableView.separatorStyle = .singleLine
+            numOfSections = 1
+            tableView.backgroundView = nil
+        }
+        else
+        {
+            let noDataLabel: UILabel  = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+            noDataLabel.numberOfLines = 5
+            noDataLabel.text = "No ideas have been recorded yet. \n\nTap the + button to add one now!"
+            noDataLabel.font = UIFont(name: "Menlo", size: 18)
+            noDataLabel.textColor = #colorLiteral(red: 0.4784313725, green: 0.7568627451, blue: 0.6980392157, alpha: 1)
+            noDataLabel.textAlignment = .center
+            tableView.backgroundView  = noDataLabel
+            tableView.separatorStyle  = .none
+        }
+        return numOfSections
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

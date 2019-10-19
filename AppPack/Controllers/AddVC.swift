@@ -14,7 +14,7 @@ class AddVC: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         descriptionTxt.delegate = self
         textViewDesign()
-        self.title = "AddIdea"
+        self.title = "New"
         self.hideKeyboardWhenTappedAround()
     }
     
